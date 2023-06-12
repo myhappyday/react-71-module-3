@@ -15,7 +15,7 @@ export class Reader extends Component {
   };
 
   componentDidMount() {
-    console.log('MOUNT');
+    // console.log('MOUNT');
     const savedState = localStorage.getItem(LS_KEY);
     if (savedState) {
       this.setState({ index: Number(savedState) });
@@ -23,7 +23,7 @@ export class Reader extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    console.log('UPDATE');
+    // console.log('UPDATE');
     if (prevState.index !== this.state.index) {
       localStorage.setItem(LS_KEY, this.state.index);
     }

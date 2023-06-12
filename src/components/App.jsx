@@ -18,6 +18,10 @@ import videos from '../../src/videos.json';
 import { Reader } from './Reader/Reader';
 import publications from '../../src/publications.json';
 
+import { ToastContainer } from 'react-toastify';
+import PokemonForm from './Pokemon/PokemonForm';
+import PokemonInfo from './Pokemon/PokemonInfo';
+
 // import Clock from './Clock';
 // import Tabs from './Tabs';
 // import tabs from '../../src/tabs.json';
@@ -29,6 +33,7 @@ class App extends Component {
     filter: '',
     showModal: false,
     selectedVideo: null,
+    pokemonName: '',
   };
 
   componentDidMount() {
@@ -158,6 +163,10 @@ class App extends Component {
     this.setState({ selectedVideo: link });
   };
 
+  handleFormSubmit = pokemonName => {
+    this.setState({ pokemonName });
+  };
+
   render() {
     // console.log('App render');
     const { todos, filter, showModal } = this.state;
@@ -169,7 +178,15 @@ class App extends Component {
 
     return (
       <Container>
-        <h1>Життєвий цикл</h1>
+        <h1>Життєвий цикл. HTTP-запити.</h1>
+
+        <h2 style={{ color: 'indigo' }}>Pokemon</h2>
+        <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
+          <PokemonForm onSubmit={this.handleFormSubmit} />
+          <PokemonInfo pokemonName={this.state.pokemonName} />
+          <ToastContainer autoClose={3000} />
+        </div>
+
         <h2 style={{ color: 'indigo' }}>Player</h2>
         <div style={{ padding: 24 }}>
           <h1>Selected video: {this.state.selectedVideo}</h1>
