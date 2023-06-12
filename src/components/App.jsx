@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import ReactPlayer from 'react-player';
 import { nanoid } from 'nanoid';
 
 import TodoList from './TodoList';
@@ -10,15 +11,24 @@ import TodoFilter from './TodoFilter/TodoFilter';
 import Modal from './Modal';
 import IconButton from './IconButton';
 import { ReactComponent as AddIcon } from './icons/add.svg';
+
+import VideoList from './VideoList';
+import Player from './Player';
+import videos from '../../src/videos.json';
+import { Reader } from './Reader/Reader';
+import publications from '../../src/publications.json';
+
 // import Clock from './Clock';
 // import Tabs from './Tabs';
 // import tabs from '../../src/tabs.json';
 
 class App extends Component {
   state = {
-    todos: initialTodos,
+    // todos: initialTodos,
+    todos: [],
     filter: '',
     showModal: false,
+    selectedVideo: null,
   };
 
   componentDidMount() {
@@ -144,6 +154,10 @@ class App extends Component {
     }));
   };
 
+  selectVideo = link => {
+    this.setState({ selectedVideo: link });
+  };
+
   render() {
     // console.log('App render');
     const { todos, filter, showModal } = this.state;
@@ -156,6 +170,16 @@ class App extends Component {
     return (
       <Container>
         <h1>Життєвий цикл</h1>
+        <h2 style={{ color: 'indigo' }}>Player</h2>
+        <div style={{ padding: 24 }}>
+          <h1>Selected video: {this.state.selectedVideo}</h1>
+          <VideoList videos={videos} onSelect={this.selectVideo} />
+          <Player url={this.state.selectedVideo} />
+        </div>
+
+        <h2 style={{ color: 'indigo' }}>Reader</h2>
+        <Reader items={publications} />
+
         {/* <h2 style={{ color: 'indigo' }}>Tabs</h2>
         <Tabs items={tabs} /> */}
 
