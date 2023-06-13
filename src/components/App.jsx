@@ -34,7 +34,19 @@ class App extends Component {
     showModal: false,
     selectedVideo: null,
     pokemonName: '',
+    pokemon: null,
+    loading: false,
   };
+
+  // async componentDidMount() {
+  //   this.setState({ loading: true });
+  //   setTimeout(() => {
+  //     fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
+  //       .then(res => res.json())
+  //       .then(pokemon => this.setState({ pokemon }))
+  //       .finally(this.setState({ loading: false }));
+  //   }, 1000);
+  // }
 
   componentDidMount() {
     // console.log('App componentDidMount');
@@ -182,7 +194,11 @@ class App extends Component {
 
         <h2 style={{ color: 'indigo' }}>Pokemon</h2>
         <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
+          {/* {this.state.loading && <h3>Loading...</h3>}
+          {this.state.pokemon && <div>{this.state.pokemon.name}</div>} */}
+          {/* Передача аргументів у функцію handleSubmit Форми */}
           <PokemonForm onSubmit={this.handleFormSubmit} />
+          {/* Передача аргументів у функцію --- компонента PokemonInfo для HTTP-запиту */}
           <PokemonInfo pokemonName={this.state.pokemonName} />
           <ToastContainer autoClose={3000} />
         </div>

@@ -4,7 +4,7 @@ export default function PokemonDataView({ pokemon: { sprites, name, stats } }) {
       <img
         src={sprites.other['official-artwork'].front_default}
         width="240"
-        height="100"
+        height="240"
         alt={name}
       />
       <h2>{name}</h2>

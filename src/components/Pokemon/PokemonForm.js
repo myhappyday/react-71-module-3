@@ -17,10 +17,10 @@ export default class PokemonForm extends Component {
     event.preventDefault();
 
     if (this.state.pokemonName.trim() === '') {
-      toast.error('Введите имя покемона.');
+      toast.error('Enter the name of pokemon');
       return;
     }
-
+    // Передача даних з локального state форми у state App
     this.props.onSubmit(this.state.pokemonName);
     this.setState({ pokemonName: '' });
   };
@@ -33,10 +33,11 @@ export default class PokemonForm extends Component {
           name="pokemonName"
           value={this.state.pokemonName}
           onChange={this.handleNameChange}
+          style={{ backgroundColor: '#fff' }}
         />
-        <button type="submit">
+        <button type="submit" style={{ backgroundColor: 'whitesmoke' }}>
           <ImSearch style={{ marginRight: 8 }} />
-          Найти
+          Search
         </button>
       </form>
     );
