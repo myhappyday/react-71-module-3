@@ -35,7 +35,7 @@ class App extends Component {
     selectedVideo: null,
     pokemonName: '',
     // pokemon: null,
-    loading: false,
+    // loading: false,
   };
 
   // async componentDidMount() {
