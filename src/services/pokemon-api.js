@@ -4,7 +4,7 @@ function fetchPokemon(name) {
       return response.json();
     }
 
-    return Promise.reject(new Error(`Нет покемона с именем ${name}`));
+    return Promise.reject(new Error(`No Pokémon named ${name}`));
   });
 }
 
