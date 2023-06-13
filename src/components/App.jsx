@@ -34,7 +34,7 @@ class App extends Component {
     showModal: false,
     selectedVideo: null,
     pokemonName: '',
-    pokemon: null,
+    // pokemon: null,
     loading: false,
   };
 
@@ -198,7 +198,7 @@ class App extends Component {
           {this.state.pokemon && <div>{this.state.pokemon.name}</div>} */}
           {/* Передача аргументів у функцію handleSubmit Форми */}
           <PokemonForm onSubmit={this.handleFormSubmit} />
-          {/* Передача аргументів у функцію --- компонента PokemonInfo для HTTP-запиту */}
+          {/* Передача аргументів у функцію  компонента PokemonInfo для HTTP-запиту */}
           <PokemonInfo pokemonName={this.state.pokemonName} />
           <ToastContainer autoClose={3000} />
         </div>

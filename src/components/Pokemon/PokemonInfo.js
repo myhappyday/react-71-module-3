@@ -12,21 +12,24 @@ import { Component } from 'react';
 // };
 
 export default class PokemonInfo extends Component {
-  // state = {
-  //   pokemon: null,
-  //   error: null,
-  //   status: Status.IDLE,
-  // };
+  state = {
+     pokemon: null,
+    // error: null,
+    // status: Status.IDLE,
+  };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.PokemonName !== this.props.PokemonName) {
-      console.log('prevProps.PokemonName:', prevProps.PokemonName);
-      console.log('this.props.PokemonName:', this.props.PokemonName);
+    const prevName = prevProps.pokemonName;
+    const nextName = this.props.pokemonName;
+
+    if (prevName !== nextName) {
       console.log("Змінилось ім'я покемона");
+      // console.log('prevProps.pokemonName:', prevProps.pokemonName);
+      // console.log('this.props.pokemonName:', this.props.pokemonName);
+      fetch(`https://pokeapi.co/api/v2/pokemon/${nextName}`).then(res => res.json()).then(pokemon => this.setState({pokemon}));
     }
     // const prevName = prevProps.pokemonName;
     // const nextName = this.props.pokemonName;
-
     // if (prevName !== nextName) {
     //   this.setState({ status: Status.PENDING });
     //   setTimeout(() => {
@@ -42,7 +45,9 @@ export default class PokemonInfo extends Component {
     return (
       <div>
         <h2>PokemonInfo</h2>
-        <p>{this.props.PokemonName}</p>
+        {/* <p>{this.props.pokemonName}</p> */}
+        
+        {this.state.pokemon && (<div>{this.state.pokemon.name}</div>)}
       </div>
     );
     // const { pokemon, error, status } = this.state;
